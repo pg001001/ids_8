@@ -267,7 +267,7 @@ pip3 install -r /root/ParamSpider/requirements.txt
 source venv/bin/activate
 deactivate
 
-chmod +x subdomain_find.sh url_find.sh information.sh detection_engine.sh run_screen.sh
+chmod +x /root/main/subdomain_find.sh /root/main/url_find.sh /root/main/information.sh /root/main/detection_engine.sh /root/main/run_screen.sh
 
 
 
