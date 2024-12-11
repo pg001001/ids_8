@@ -20,5 +20,10 @@ domain=$1
 # Run JavaScript file analysis 
 ./information.sh "$domain"
 
+
+./virustotal_url.sh "/root/main/"$domain"/alive_domains.txt" > "/root/main/"$domain"/u.txt" 
+grep -oP 'https?://[^\s]+'  "/root/main/"$domain"/u.txt"  > "/root/main/"$domain"/url.txt"
+
+
 # Run detection engine 
 ./detection_engine.sh "$domain"

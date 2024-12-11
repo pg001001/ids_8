@@ -19,14 +19,13 @@ url_enumeration() {
     # echo "Running waymore for ${domain}..."
     waymore -i "${domain}" -mode U -c "${HOME}/config.yml" -oU "${base_dir}/allurls.txt"
 
-    while read -r domain; do curl -s "https://www.virustotal.com/vtapi/v2/domain/report?apikey=416831de42328f797f483af38bd172bea6039adad6c95dcc58e4d16ba323b389&domain=$domain" | jq -r '.detected_urls[].url'; done < "${base_dir}/live_subdomains.txt" > "${base_dir}/allurls.txt"
-    
     # Remove duplicate URLs
     # echo "Removing duplicate URLs..."
     sort -u "${base_dir}/allurls.txt" -o "${base_dir}/allurls.txt"
 
     # echo "Getting live urls for ${domain}..."
     cat "${base_dir}/allurls.txt" | httpx -random-agent -retries 2 -mc 200,403,500 -o "${base_dir}/liveallurls.txt" 2>/dev/null
+    
     # halive "${base_dir}/allurls.txt" -o "${base_dir}/liveallurls.txt" 2>/dev/null
     
     mkdir -p "${base_dir}/vuln/"
