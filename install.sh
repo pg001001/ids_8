@@ -112,7 +112,7 @@ pipx ensurepath
 # Install port scan
 
 echo "Installing nmap..."
-sudo apt install nmap
+sudo apt install nmap -y
 
 echo "Installing naabu..."
 apt install -y libpcap-dev 
