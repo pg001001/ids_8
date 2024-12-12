@@ -20,8 +20,7 @@ domain=$1
 # Run JavaScript file analysis 
 ./information.sh "$domain"
 
-
-./virustotal_url.sh "/root/main/"$domain"/alive_domains.txt" > "/root/main/"$domain"/u.txt" 
+./virustotal_url.sh "/root/main/"$domain"/live_subdomains.txt" > "/root/main/"$domain"/u.txt" 
 grep -oP 'https?://[^\s]+'  "/root/main/"$domain"/u.txt"  > "/root/main/"$domain"/url.txt"
 
 

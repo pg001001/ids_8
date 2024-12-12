@@ -69,9 +69,9 @@ find_subdomains() {
     curl --silent --insecure --tcp-fastopen --tcp-nodelay https://webscout.io/lookup/$1 | grep -o -E "[a-zA-Z0-9._-]+\.$1" | sort -u >> /tmp/sub-drill-tmp.txt &
     curl --silent --insecure --tcp-fastopen --tcp-nodelay "https://api.subdomain.center/?domain=$1&engine=cuttlefish" | grep -o -E "[a-zA-Z0-9._-]+\.$1" | sort -u >> /tmp/sub-drill-tmp.txt &
 
-    cat /tmp/sub-drill-tmp.txt | sed -e "s/\*\.$1//g" | sed -e "s/^\..*//g" | grep -o -E "[a-zA-Z0-9._-]+\.$1" | sort -u > "${base_dir}/subdomains.txt"
+    cat /tmp/sub-drill-tmp.txt | sed -e "s/\*\.$1//g" | sed -e "s/^\..*//g" | grep -o -E "[a-zA-Z0-9._-]+\.$1" | sort -u > "${base_dir}/subdomains_2.txt"
     rm -f /tmp/sub-drill-tmp.txt
-    cat "${base_dir}/subdomains.txt" | httpx -silent -o "${base_dir}/alive_domains.txt"
+    cat "${base_dir}/subdomains_2.txt" | httpx -silent -o "${base_dir}/alive_domains.txt"
 }
 
 # Check if domain is provided
